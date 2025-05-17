@@ -1,4 +1,4 @@
-import { BaseCalculator } from './BaseCalculator';
+import { BaseCalculator } from './BaseCalculator.js';
 export class LatexCalculator extends BaseCalculator {
     evaluate(): string {
         try {

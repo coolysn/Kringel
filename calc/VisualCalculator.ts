@@ -1,4 +1,4 @@
-import { LatexCalculator } from "./LatexCalculator";
+import { LatexCalculator } from "./LatexCalculator.js";
 
 export class VisualCalculator{
     private inputElement: HTMLTextAreaElement;

@@ -1,4 +1,4 @@
-import { VisualCalculator } from './VisualCalculator';
+import { VisualCalculator } from './VisualCalculator.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   new VisualCalculator('latexInput', 'renderArea', 'resultArea');
