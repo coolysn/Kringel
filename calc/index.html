@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minu LaTeX kalkulaator</title>
+  <script type="module" src="main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="main.css">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</head>
+<body>
+  <h2>Matemaatiline kalkulaator</h2>
+
+  <textarea id="latexInput" rows="2" style="width: 100%; font-size: 1.2rem;"></textarea>
+
+  <div class="keypad">
+    <button data-insert="\\frac{}{}">÷</button>
+    <button data-insert="\\sqrt{}">√</button>
+    <button data-insert="\\pi">π</button>
+    <button data-insert="\\sin()">sin</button>
+    <button data-insert="\\cos()">cos</button>
+    <button data-insert="^">xʸ</button>
+    <button data-insert="+">+</button>
+    <button data-insert="-">−</button>
+    <button data-insert="*">×</button>
+    <button data-insert="/">÷</button>
+    <button id="clearBtn">Kustuta</button>
+    <button id="equalsBtn">=</button>
+  </div>
+</body>
+</html>
