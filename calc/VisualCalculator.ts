@@ -1,44 +1,26 @@
 import { LatexCalculator } from "./LatexCalculator.js";
 
-export class VisualCalculator{
-    private inputElement: HTMLTextAreaElement;
-    private renderElement: HTMLElement;
+export class VisualCalculator {
+    private inputField: any; // MathField
     private resultElement: HTMLElement;
     private logic: LatexCalculator;
 
-    constructor(inputId: string, renderId: string, resultId: string){
-        this.inputElement = document.getElementById(inputId) as HTMLTextAreaElement;
-        this.renderElement = document.getElementById(renderId) as HTMLElement;
+    constructor(inputId: string, resultId: string) {
+        this.inputField = document.getElementById(inputId);
         this.resultElement = document.getElementById(resultId) as HTMLElement;
         this.logic = new LatexCalculator();
         this.setupButtons();
+        
+        // Kuula MathLive input muutusi
+        this.inputField.addEventListener('input', () => {
+            const content = this.inputField.value;
+            this.logic.setContents(content);
+        });
     }
 
     insertToInput(content: string) {
-        const cursorPos = this.inputElement.selectionStart;
-        const currentValue = this.inputElement.value;
-        const newValue = currentValue.slice(0, cursorPos) + content + currentValue.slice(cursorPos);
-        this.inputElement.value = newValue;
-        this.logic.insert(content);
-        this.render();
-    }
-
-    render() {
-        this.renderElement.innerHTML = `\\(${this.logic.getContents()}\\)`;
-        // @ts-ignore
-        MathJax.typesetPromise();
-    }
-
-    evaluate(){
-        const result = this.logic.evaluate();
-        this.resultElement.innerHTML = `= ${result}`;
-    }
-
-    clear(){
-        this.logic.clear();
-        this.inputElement.value = '';
-        this.renderElement.innerHTML = '';
-        this.resultElement.innerHTML = '';
+        this.inputField.insert(content);
+        this.inputField.focus();
     }
 
     setupButtons() {
@@ -53,16 +35,22 @@ export class VisualCalculator{
         });
 
         document.getElementById('calc-evaluate')?.addEventListener('click', () => {
-            this.evaluate();
+            const result = this.logic.evaluate();
+            this.resultElement.textContent = `= ${result}`;
         });
 
         document.getElementById('calc-clear')?.addEventListener('click', () => {
-            this.clear();
+            this.inputField.value = '';
+            this.resultElement.textContent = '';
+            this.logic.clear();
+            this.inputField.focus();
         });
 
         document.getElementById('calc-backspace')?.addEventListener('click', () => {
-            // TODO: implement backspace
+            this.inputField.executeCommand('deleteBackward');
+            this.inputField.focus();
         });
     }
-
 }
+
+console.log("test");

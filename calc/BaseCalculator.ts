@@ -6,11 +6,19 @@ export abstract class BaseCalculator{
         this.panelContents += content; 
     }
 
+    setContents(content: string): void {
+        this.panelContents = content;
+    }
+
     getContents(): string {
         return this.panelContents;
     }
 
     clear(): void {
         this.panelContents = '';
+    }
+
+    backspace(): void {
+        this.panelContents = this.panelContents.slice(0, -1);
     }
 }

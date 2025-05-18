@@ -21,3 +21,7 @@ Mathlive    Valemite sisestamiseks ja redigeerimiseks          npm install mathl
 (MathQuill asemel vt docsi)
 
 https://www.npmjs.com/package/mathlive
+
+Testid toimivad, kui võtta ära importi juurest .js laiend (ts failidel), aga siis ei toimi see veebibrauseris. 
+Ehk veebis kuvamiseks pane ts failidel import /nimi.js lõppu.
+![alt text](image.png)
