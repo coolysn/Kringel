@@ -6,14 +6,18 @@ export class LatexCalculator extends BaseCalculator {
 
         // Toeta kujundeid nagu 9\cos(9) või 9\cos{9}
         expr = expr
+            // ^ → **
+            .replace(/(\d+|\([^()]+\))\s*\^\s*([-\d.]+)/g, '($1)**($2)')
             // 9\cos(9) -> 9*Math.cos(9)
             .replace(/(\d+)\s*\\(sin|cos|tan)\s*\(([^)]*)\)/g, '($1)*Math.$2($3)')
             .replace(/(\d+)\s*\\(sin|cos|tan)\s*{([^}]*)}/g, '($1)*Math.$2($3)')
-            // \sin(9) -> Math.sin(9)
+           
             .replace(/\\(sin|cos|tan)\s*\(([^)]*)\)/g, 'Math.$1($2)')
             .replace(/\\(sin|cos|tan)\s*{([^}]*)}/g, 'Math.$1($2)')
             // \sqrt{9} -> Math.sqrt(9)
             .replace(/\\sqrt\s*{([^}]*)}/g, 'Math.sqrt($1)')
+            // Lisa tugi ka kujule \sqrt9 (ilma süvendita)
+            .replace(/\\sqrt\s*(\d+(\.\d+)?)/g, 'Math.sqrt($1)')
             // \pi -> Math.PI
             .replace(/\\pi/g, 'Math.PI')
             // \frac{a}{b} -> (a)/(b)
