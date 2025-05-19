@@ -25,3 +25,11 @@ https://www.npmjs.com/package/mathlive
 Testid toimivad, kui võtta ära importi juurest .js laiend (ts failidel), aga siis ei toimi see veebibrauseris. 
 Ehk veebis kuvamiseks pane ts failidel import /nimi.js lõppu.
 ![alt text](image.png)
+
+
+regex eksponentsiaali jaoks .replace(/\be\s*\^\s*{([^}]+)}/g, 'Math.E**($1)')
+.replace(/\be\s*\^\s*([a-zA-Z0-9]+)/g, 'Math.E**($1)')
+
+ln jaoks
+.replace(/\\ln\s*\(([^)]*)\)/g, 'Math.log($1)')
+.replace(/\\ln\s*{([^}]*)}/g, 'Math.log($1)')

@@ -7,27 +7,7 @@
   <!-- Ainult MathLive, MathJax pole vaja -->
   <script type="module" src="https://unpkg.com/mathlive?module"></script>
   <script type="module" src="/dist/main.js"></script>
-
-  <style>
-    math-field {
-      width: 100%;
-      font-size: 1.4rem;
-      margin: 1rem 0;
-      border: 1px solid #ccc;
-      padding: 0.5rem;
-    }
-    .keypad {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0.5rem;
-      max-width: 500px;
-      margin: 1rem 0;
-    }
-    .keypad button {
-      padding: 1rem;
-      font-size: 1.2rem;
-    }
-  </style>
+  <link rel="stylesheet" href="/calc/main.css">
 </head>
 <body>
   <h2>Matemaatiline LaTeX-kalkulaator</h2>
@@ -44,37 +24,42 @@
 
   <!-- Klahvid -->
   <div class="keypad">
-    <button class="calc-button" data-content="\frac{#0}{#?}">÷</button>
+    <!-- Funktsioonide rida -->
     <button class="calc-button" data-content="\sqrt{#0}">√</button>
     <button class="calc-button" data-content="\pi">π</button>
     <button class="calc-button" data-content="\sin(#0)">sin</button>
     <button class="calc-button" data-content="\cos(#0)">cos</button>
+
+    <!-- Veel funktsioone -->
     <button class="calc-button" data-content="\tan(#0)">tan</button>
     <button class="calc-button" data-content="^{#0}">xʸ</button>
-    <button class="calc-button" data-content="+">+</button>
-    <button class="calc-button" data-content="-">−</button>
+    <button class="calc-button" data-content="\frac{#0}{#?}">÷</button>
     <button class="calc-button" data-content="*">×</button>
 
-    <!-- Numbrid -->
+    <!-- Numbrid ja tehete nupud -->
     <button class="calc-button" data-content="7">7</button>
     <button class="calc-button" data-content="8">8</button>
     <button class="calc-button" data-content="9">9</button>
+    <button class="calc-button" data-content="-">−</button>
+
     <button class="calc-button" data-content="4">4</button>
     <button class="calc-button" data-content="5">5</button>
     <button class="calc-button" data-content="6">6</button>
+    <button class="calc-button" data-content="+">+</button>
+
     <button class="calc-button" data-content="1">1</button>
     <button class="calc-button" data-content="2">2</button>
     <button class="calc-button" data-content="3">3</button>
-    <button class="calc-button" data-content="0">0</button>
     <button class="calc-button" data-content=".">.</button>
-    <!-- Sulgude nupud -->
+
+    <button class="calc-button" data-content="0">0</button>
     <button class="calc-button" data-content="(">(</button>
     <button class="calc-button" data-content=")">)</button>
+    <button id="calc-backspace">←</button>
 
     <!-- Kontrollnupud -->
     <button id="calc-clear">AC</button>
     <button id="calc-evaluate">=</button>
-    <button id="calc-backspace">←</button>
   </div>
 </body>
 </html>

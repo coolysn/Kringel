@@ -18,13 +18,13 @@ export class VisualCalculator {
         });
     }
 
-    insertToInput(content: string) {
+    insertToInput(content: string) { //valemisse lisamiseks 
         this.inputField.insert(content);
         this.inputField.focus();
     }
 
     setupButtons() {
-        document.querySelectorAll('.calc-button').forEach((el) => {
+        document.querySelectorAll('.calc-button').forEach((el) => { //seob nupud vajutustega 
             const button = el as HTMLButtonElement;
             button.addEventListener('click', () => {
                 const content = button.getAttribute('data-content');
@@ -48,7 +48,7 @@ export class VisualCalculator {
 
         document.getElementById('calc-backspace')?.addEventListener('click', () => {
             this.inputField.executeCommand('deleteBackward');
-            this.inputField.focus();
+            this.inputField.focus(); //focus teeb, et sisestus jääks aktiivseks / klaviatuur kinni ei läheks
         });
     }
 }
